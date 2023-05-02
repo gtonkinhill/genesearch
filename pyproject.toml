@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "genesearch"
+version = "0.1.0"
+description = "Summarised the literature for a particular gene and species query"
+authors = ["Gerry Tonkin-Hill <gerryt@uio.no>", "John Lees <jlees@ebi.ac.uk>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+openai = "^0.27"
+beautifulsoup4 = "^4.0"
+
+[tool.poetry.scripts]
+genesearch = "genesearch.__main__:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[options.package_data]
+genesearch = ["api_keys.yaml"]
