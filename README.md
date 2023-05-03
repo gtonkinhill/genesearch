@@ -1,5 +1,8 @@
-# genesearch
+<p align="center">
+<img src="https://user-images.githubusercontent.com/10625107/235885831-1b864d76-3af6-4721-adff-d6c72033209b.png" alt="alt text" width="300">
+</p>
 
+# genesearch
 
 An experimental program created at the **9th Microbes & Food Safety Bioinformatics Hackathon** to summarise the literature for a particular gene using Chat-GPT
 
