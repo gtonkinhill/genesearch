@@ -1,7 +1,7 @@
 # genesearch
 
 
-An experimental program created at the "9th Microbes & Food Safety Bioinformatics Hackathon" to summarise the literature for a particular gene using Chat-GPT
+An experimental program created at the **9th Microbes & Food Safety Bioinformatics Hackathon** to summarise the literature for a particular gene using Chat-GPT
 
 
 The algorithm searches PubMed for literature on a particular gene within a species. It then uses Chat-GPT to generate summaries in a hierarchical manner first for each paragraph, then each paper and finally for the set of papers.
