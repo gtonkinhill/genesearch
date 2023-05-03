@@ -15,7 +15,7 @@ The program requires OpenAI and Google search API's that must be supplied by the
 ### Installation
 
 
-The easiest way to install the program is to clone the GitHub repository and install using pip. To include the API's create a file called `api_keys.yaml` formatted as 
+The easiest way to install the program is to clone the GitHub repository and install using pip. To include the API's create a file called `api_keys.yaml` and place it in the folder `genesearch/genesearch/`. The file should be formatted as 
 
 
 ```
