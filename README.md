@@ -55,19 +55,18 @@ genesearch -g "gene name" -s "species name"
 
 
 ```
-usage: genesearch [-h] -g GENE -s SPECIES [-n NUMBER_PAPERS] [--quiet]
-                  [--version]
+usage: genesearch [-h] -g GENE -s SPECIES [-n NUMBER_PAPERS]
+                  [--max-paragraphs MAX_PARA]
+                  [-l {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [--version]
 
-
-genesearch: A tool to summarise the literature for a particular gene in a
+genesearch: A tool to summarise the literature for a particluar gene in a
 species.
-
 
 optional arguments:
   -h, --help            show this help message and exit
-  --quiet               suppress additional output
+  -l {DEBUG,INFO,WARNING,ERROR,CRITICAL}, --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL}
+                        Set the logging threshold.
   --version             show program's version number and exit
-
 
 Input/output:
   -g GENE, --gene GENE  The gene name.
@@ -75,6 +74,9 @@ Input/output:
                         The species name.
   -n NUMBER_PAPERS, --num-papers NUMBER_PAPERS
                         Number of papers to summarise (default=3)
+  --max-paragraphs MAX_PARA
+                        Maximum number of paragraphs to include per paper
+                        (default=10)
 ```
 
 
