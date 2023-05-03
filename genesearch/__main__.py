@@ -4,6 +4,7 @@ import yaml
 import importlib
 from importlib.metadata import version
 import sys
+import os
 import argparse
 import logging
 
@@ -40,11 +41,10 @@ def get_options(args):
                          type=int)
 
      # Other options
-    parser.add_argument("--quiet",
-                        dest="verbose",
-                        help="suppress additional output",
-                        action='store_false',
-                        default=True)
+    parser.add_argument('-l', '--loglevel', type=str.upper,
+                        choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'],
+                        default='INFO', help='Set the logging threshold.')
+
     parser.add_argument('--version',
                         action='version',
                         version='%(prog)s ' + version("genesearch"))
@@ -61,13 +61,24 @@ def main():
     # Load arguments
     args = get_options(sys.argv[1:])
 
+    # set logging up
+    logging.basicConfig(level=args.loglevel,
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
+
     # Load API Keys
-    with importlib.resources.as_file(importlib.resources.files("genesearch").joinpath("api_keys.yaml")) as yaml_path:
-        with open(yaml_path) as yaml_file:
-            try:
-                apis = yaml.safe_load(yaml_file)
-            except yaml.YAMLError as error:
-                print(f"Error reading YAML file: {error}")
+    apis = {}
+    apis['google_api_key'] = os.getenv('GOOGLE_API_KEY')
+    apis['google_engine_id'] = os.getenv('GOOGLE_ENGINE_ID')
+    apis['openai_api_key'] = os.getenv('OPENAI_API_KEY')
+
+    if None in apis.values()
+        with importlib.resources.as_file(importlib.resources.files("genesearch").joinpath("api_keys.yaml")) as yaml_path:
+            with open(yaml_path) as yaml_file:
+                try:
+                    apis = yaml.safe_load(yaml_file)
+                except yaml.YAMLError as error:
+                    print(f"Error reading YAML file: {error}")
 
     openai.api_key = apis['openai_api_key']
 
