@@ -83,7 +83,7 @@ def main():
     apis['google_engine_id'] = os.getenv('GOOGLE_ENGINE_ID')
     apis['openai_api_key'] = os.getenv('OPENAI_API_KEY')
 
-    if None in apis.values()
+    if None in apis.values():
         with importlib.resources.as_file(importlib.resources.files("genesearch").joinpath("api_keys.yaml")) as yaml_path:
             with open(yaml_path) as yaml_file:
                 try:
