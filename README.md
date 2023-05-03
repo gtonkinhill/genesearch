@@ -21,12 +21,18 @@ The easiest way to install the program is to clone the GitHub repository and ins
 ```
 google_api_key: "your google API key"
 google_engine_id: "your google search engine ID"
-openai_api_key: "your OpenAI API key"
+openai_api_key: "your openAI API key"
 ```
 
+Alternatively you can set environment variables by running
+
+```
+export GOOGLE_API_KEY="your google API key"
+export GOOGLE_ENGINE_ID="your google search engine ID"
+export OPENAI_API_KEY="your openAI API key"
+```
 
 The program can then be installed by running
-
 
 ```
 cd genesearch
