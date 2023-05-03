@@ -11,7 +11,7 @@ def call_openai_chat_api(prompt, model="gpt-3.5-turbo"):
     return completion.choices[0].message.content
 
 
-def divide_and_conquer_cgpt(paragraphs, gene):
+def divide_and_conquer_cgpt(paragraphs, gene, max_para=100):
     summaries = paragraphs
 
     while len(summaries) > 1:
@@ -25,6 +25,7 @@ def divide_and_conquer_cgpt(paragraphs, gene):
 
             if i >= 2 and not gene_mentioned:
                 continue
+            if i > max_para: continue
             # if not gene_mentioned: continue
 
             # Define your prompt (message)

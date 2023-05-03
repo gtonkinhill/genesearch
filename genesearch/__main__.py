@@ -39,6 +39,13 @@ def get_options(args):
                          help="Number of papers to summarise (default=3)",
                          default=3,
                          type=int)
+    
+    search_opts.add_argument(
+                         "--max-paragraphs",
+                         dest="max_para",
+                         help="Maximum number of paragraphs to include per paper (default=10)",
+                         default=10,
+                         type=int)
 
      # Other options
     parser.add_argument('-l', '--loglevel', type=str.upper,
@@ -65,6 +72,10 @@ def main():
     logging.basicConfig(level=args.loglevel,
                     format='%(asctime)s - %(levelname)s - %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
+
+    if args.max_para <= 3:
+        logging.error("The maximum number of paragraphs must be > 3!")
+        sys.exit(1)
 
     # Load API Keys
     apis = {}
@@ -95,7 +106,7 @@ def main():
     # split into chuncks and recursively summarise using GPT-3
     paper_summaries = []
     for paper in texts:
-        paper_summaries.append(divide_and_conquer_cgpt(paper, args.gene))
+        paper_summaries.append(divide_and_conquer_cgpt(paper, args.gene, args.max_para))
 
     relevant_summaries = []
     for summary in paper_summaries:
@@ -104,7 +115,7 @@ def main():
 
     if len(relevant_summaries)>1:
         logging.info("Merging paper summaries")
-        final_summary = divide_and_conquer_cgpt(relevant_summaries, args.gene)
+        final_summary = divide_and_conquer_cgpt(relevant_summaries, args.gene, len(relevant_summaries))
     elif len(relevant_summaries)==1:
         logging.info("Only a sinlge paper has been summaried.")
         final_summary = relevant_summaries[0]
