@@ -42,6 +42,11 @@ cd genesearch
 pip install .
 ```
 
+### Setting up the APIs
+
+The OpenAI API key can be obtained by signing up for an account [here](https://platform.openai.com/account/billing/overview).
+
+A custom Google search API can be set up by following the instructions [here](https://developers.google.com/custom-search/v1/overview) and setting up a custom search engine using the control panel [here](https://programmablesearchengine.google.com/controlpanel/all). At the moment we have tested the program by specifying `ncbi.nlm.nih.gov/*` in the "sites to search" section. 
 
 ### Running the program
 
